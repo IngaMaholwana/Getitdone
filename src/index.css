@@ -1,0 +1,574 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital@0;1&display=swap');
+:root {
+    --color-primary: hsl(215, 50%, 90%);
+    --color-secondary: hsl(215, 50%, 10%);
+    --color-tertiary: hsl(275, 80%, 20%);
+    --color-accent: hsl(155, 80%, 20%);
+    font-family: "Montserrat";
+    --scroll-color: rgba(0,0,0,0.5) rgba(211,211,211,0.6);
+}
+.dark {
+    --color-primary: hsl(215, 50%, 10%);
+    --color-secondary: hsl(215, 50%, 90%);
+    --color-tertiary: hsl(275, 80%, 80%);
+    --color-accent: hsl(155, 80%, 80%);
+}
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+body {
+    font-size: 20px;
+    color: var(--color-secondary);
+    margin: 0;
+    display: flex;
+    overflow-y: hidden;
+    margin-top: 0.5em;
+}
+#page-name {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: "Montserrat";
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0, 0.1);
+    /* background-color: rgba(211,211,211,0.5); */
+    color: black;
+    width: 16rem;
+    height: 100dvh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-right: 1px solid rgba(0,0,0, 0.1);
+}
+#nav-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8%;
+}
+button, input[type="submit"] {
+    border: none;
+    font-weight: 800;
+    font-size: 0.87rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-secondary);
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.nav-button, .header-button {
+    height: 85%;
+    width: 60%;
+    padding: 0.5rem;
+    transition: transform 0.1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav-button > svg {
+    fill: rgba(250,250, 250, 0.5);
+}
+.header-button {
+    width: 40%;
+    height: 80%;
+    text-align: center;
+    padding: 1%;
+    transition: transform 0.1s ease-in-out;
+}
+#nav-projects {
+    display: flex;
+    height: fit-content;
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-color);
+    flex-direction: column;
+    align-items: start;
+}
+.nav-project {
+    background-color: rgba(211,211,211,0);
+    height: 4em;
+    width: 95%;
+    border: none;
+    box-shadow: none;
+    text-align: justify;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}
+.nav-project:hover {
+    background-color: rgba(211,211,211,0.5);
+    cursor: pointer;
+    animation: color-change 0.1s ease-in;
+    color: rgba(0, 0, 0, 1);
+}
+.active-project {
+    background-color: rgba(211,211,211,0.5);
+    cursor: pointer;
+    animation: color-change 0.1s ease-in;
+    color: rgba(0, 0, 0, 1);
+}
+@keyframes color-change {
+    0% {
+        opacity: 80%;
+        /* font-weight: 500; */
+    }
+    100% { 
+        opacity: 100%;
+        color: rgba(0, 0, 0, 1);
+    }
+}
+.nav-project-name {
+    font-size: 0.875rem;
+    background-color: transparent;
+    border: none;
+}
+#content {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    padding-top: 1%;
+    background-color: rgb(249 250 251 / 1);
+}
+#project {
+    height: 100dvh;
+    width: 100%;
+    margin: 0 auto auto 5%;
+}
+#project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 18%;
+}
+#project-dates {
+    display: flex;
+    width: 28%;
+    align-items: center;
+    justify-content: start;
+    gap: 22%;
+}
+#project-date {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 25%;
+    gap: 5%;
+}
+#project-date > svg {
+    fill: grey;
+    height: 1.2em;
+    width: 1.2em;
+}
+.project-name {
+    font-size: 2rem;
+    margin: 0;
+}
+#project-title {
+    margin-bottom: 0.5em;
+}
+.header-button > svg, #todo-complete > svg {
+    height: 1.5em;
+    width: 1.5em;
+}
+.header-button > svg {
+    fill: rgba(250,250, 250, 0.5);
+}
+#todo-delete > svg {
+    fill: red;
+}
+.finished-project {
+    opacity: 0.6;
+    .project-name::after {
+        content: " ✔";
+        font-weight: 800;
+        color: green;
+    }
+    .nav-project-name::after {
+        content: " ✔";
+        font-weight: 800;
+        color: green;
+    }
+}
+.overdue::after {
+    content: "❗";
+    font-size: 1rem;
+    font-weight: 800;
+    color: red;
+}
+#project-information {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 50%;
+    height: fit-content;
+    margin-bottom: 0.5em;
+}
+.project-description {
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    color: rgba(0, 0, 0, 0.6);
+}
+.project-deadline {
+    font-size: 0.875rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: rgba(0, 0, 0, 0.5);
+    width: 80%;
+}
+#project-options {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-right: 2.5em;
+}
+#project-buttons {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#project-filters {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    font-size: 1.1rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.project-filter {
+    width: 40%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.project-filter > label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.project-filter > label > svg {
+    fill: skyblue;
+}
+.project-filter > select {
+    border-radius: 0.3rem;
+    height: 53%;
+    width: 100%;
+    background-color: white;
+    padding: 0.5em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0.5em;
+}
+.project-card {
+    background-color: var(--color-primary);
+    width: 23%;
+    box-shadow: 0px 2px 2px #00000030, 0px 8px 8px #00000015;
+    border: 2px solid var(--color-tertiary);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#todos {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 70%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-color);
+    margin-top: 1%;
+}
+#deleted-todo {
+    animation: fadeOut 0.5s ease-in-out;
+}
+@keyframes fadeOut {
+    0% { opacity: 1;}
+    100% { 
+        opacity: 0;}
+}
+.todo {
+    width: 25%;
+    box-shadow: 0px 2px 2px #00000030, 0px 8px 8px #00000015;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    padding: 0.5em;
+    margin: 1em;
+    transition: transform 0.2s ease-in-out;
+    height: 4.5em;
+}
+.todo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    .todo-description {
+        overflow:visible;
+        word-break: break-word;
+    }
+}
+.new-todo {
+    animation: slideIn 1s ease-in-out;
+}
+@keyframes slideIn {
+    0% { 
+        transform: translateY(-100%);
+    }
+    70% {
+        transform: translateY(15%);
+    }
+    90% {
+        transform: translateY(5%);
+    }
+    100% { transform: translatey(0);
+        opacity: 1;}
+    
+}
+.todo-options {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100%;
+}
+.todo-info {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    height: 100%;
+}
+#todo-priority {
+    display: none;
+    height: 1%;
+    width: 20%;
+    font-size: 0.8rem;
+    width: 80%;
+    color: grey;
+    font-weight: 500
+}
+.low-priority {
+    border-left: 10px solid grey;
+}
+.normal-priority {
+    border-left: 10px solid orange;
+}
+.high-priority {
+    border-left: 10px solid red;
+}
+.todo-description {
+    text-overflow: ellipsis;
+    width: 90%;
+    overflow: hidden;
+    font-size: 0.875rem;
+    max-height: 80%;
+    margin: 0.5em;
+}
+#todo-complete, #todo-delete {
+    background-color: white;
+    font-size: 0.8rem;
+    width: 5em;
+    height: 2.5em;
+    transition: transform 0.1s ease-in-out;
+}
+#todo-complete > svg {
+    fill: green;
+}
+.nav-button:hover, .header-button:hover, .nav-button:focus, .header-button:focus {
+    transform: scale(1.05);
+    background-color: rgba(13, 23, 38, 0.9);
+    cursor: pointer;
+}
+#todo-complete:hover, #todo-delete:hover{
+    background-color: rgba(211,211,211,0.2);
+    cursor: pointer;
+} 
+.completed-todo {
+    background-color: lightgrey;
+    opacity: 0.5;
+}
+.completed-todo:hover {
+    opacity: 0.7;
+}
+.completed-todo:after {
+    content: "✔";
+    font-weight: 800;
+    font-size: 3rem;
+    color: var(--color-accent);
+    opacity: 1;
+}
+.completed-todo > .todo-options > #todo-complete {
+    background-color: var(--color-primary);
+}
+button {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+#new-project, #new-todo {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.6);
+}
+#new-project-form, #new-todo-form {
+    height: 45%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+input, select {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin: auto;
+    font-size: 0.9rem;
+    margin: 2% auto 2% auto;
+}
+#new-todo-form > select{
+    width: 30%;
+}
+input {
+    width: 60%;
+    height: 1em;
+    text-align: center;
+}
+input[type="submit"] {
+    height: 2.5em;
+}
+label {
+    font-weight: 600;
+    font-size: 1.13rem;
+}
+.mobile-menu {
+    display: none;
+}
+@media (max-width: 500px) {
+    nav {
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+    }
+    .nav-mobile {
+        display: none;
+    }
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: none;
+        height: 1.5em;
+        width: 3em;
+        background-color: white;
+        padding: 0;
+        padding-right: 0.5em;
+        border: none;
+    }
+    .button-line {
+        width: 100%;
+        display: block;
+        height: 15%;
+        background-color: black;
+    }
+    #burger-menu {
+        height: 100%;
+        width: 100%;
+    }
+    #content {
+        width: 100%;
+    }
+    #project-title {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    #project-header {
+        height: fit-content;
+        flex-direction: column;
+    }
+    #project-information {
+        width: 20em;
+        height: fit-content;
+        margin-bottom: 0.5em;
+    }
+    #project-options {
+        height: fit-content;
+        width: 20em;
+        margin: 0;
+    }
+    .nav-button {
+        width: 10em;
+        height: 2.5em;
+    }
+    #project-buttons,#project-filters {
+        height: 2em;
+        justify-content: space-between;
+    }
+    #project-filters {
+        height: 4em;
+    }
+    .project-filter {
+        width: 40%;
+    }
+    .header-button {
+        width: 40%;
+        height: 3em;
+        font-size: 0.8rem;
+    }
+    #new-project-form, #new-todo-form {
+        width: 60%;
+    }
+    input, select {
+        width: 75%;
+    }
+    #page-name, .project-name {
+        font-size: 1.5rem;
+    }
+    .project-name {
+        width: 100%;
+        font-size: 1.25rem;
+    }
+    .todo {
+        width: 80%;
+        height: 15dvh;
+    }
+    .project-description {
+        width: 100%;
+        font-size: 0.875rem;
+    }
+    #project-date {
+        width: 35%;
+    }
+    #project-deadline {
+        font-size: 0.875rem;
+    }
+    .finished > #project-header > #project-options > #project-buttons {
+        display: none;
+    }
+    
+}

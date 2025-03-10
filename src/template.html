@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+</head>
+<body>
+    <nav>
+        <h1 id="page-name" tabindex="0">Todo List</h1>
+        <section id="nav-buttons">
+            <button popovertarget="new-project" class="nav-button" data-formtarget="new-project" title="Create a new project">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                New project
+            </button>
+            <div popover id="new-project">
+                <form popover id="new-project-form">
+                    <label for="name">Project name</label>
+                    <input type="text" name="name" placeholder="My project" maxlength="25" required>
+                    <label for="description">Description</label>
+                    <input type="text" name="description" placeholder="Lorem ipsum dolor sit amet" maxlength="200" required>
+                    <label for="deadline">Deadline</label>
+                    <input type="date" name="deadline" required>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </section>
+        <ul id="nav-projects">
+            <template id="nav-project-template">
+                <button class="nav-project">
+                    <p class="nav-project-name"></p>
+                </button>
+            </template>
+        </ul>
+    </nav>
+    <section id="content">
+    </section>
+    <template id="project-template">
+        <div id="project">
+            <div id="project-header">
+                <div id="project-information">
+                    <div id="project-title">
+                        <button class="mobile-menu">
+                            <span class="button-line"></span>
+                            <span class="button-line"></span>
+                            <span class="button-line"></span>
+                        </button>
+                        <h2 class="project-name" tabindex="0"></h2>
+                    </div>
+                    <p class="project-description" tabindex="0"></p>
+                    <div id="project-date">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
+                        <p class="project-deadline" tabindex="0"></p>
+                    </div>
+                </div>
+                <div id="project-options">
+                    <div id="project-buttons">
+                        <button id="finish-project" class="header-button" title="Finish this project">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                            Finish
+                        </button>
+                        <button popovertarget="new-todo" class="header-button" data-formtarget="new-todo" title="Create a new todo">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                            New Todo
+                        </button>
+                    </div>
+                    <div popover id="new-todo">
+                        <form popover id="new-todo-form">
+                            <label for="project">Project</label>
+                            <input type="text" name="project" required readonly>
+                            </select>
+                            <label for="description">Description</label>
+                            <input type="text" name="description" placeholder="Lorem ipsum dolor sit amet" maxlength="70" required>
+                            <label for="priority">Priority</label>
+                            <select name="priority" required>
+                                <option value="high">High</option>
+                                <option value="normal">Normal</option>
+                                <option value="low">Low</option>
+                            </select>
+                            <input type="submit" value="Save">
+                        </form>
+                    </div>
+                     <div id="project-filters">
+                        <div class="project-filter">
+                            <!-- <label for="todo-priority-select">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M400-240v-80h160v80H400ZM240-440v-80h480v80H240ZM120-640v-80h720v80H120Z"/></svg>
+                                Priority</label> -->
+                            <select name="todo-priority-select" id="todo-priority-select" aria-label="Priority">
+                                <option value="all" selected>Priority</option>
+                                <option value="high">🔴 High</option>
+                                <option value="normal">🟡 Normal</option>
+                                <option value="low">⚫ Low</option>
+                            </select>
+                        </div>
+                        <div class="project-filter">
+                            <!-- <label for="todo-completion-select">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M400-240v-80h160v80H400ZM240-440v-80h480v80H240ZM120-640v-80h720v80H120Z"/></svg>
+                                Completion</label> -->
+                            <select name="todo-completion" id="todo-completion-select" aria-label="Completion">
+                                <option value="all" selected>Completion</option>
+                                <option value="true">Completed</option>
+                                <option value="false">Uncompleted</option>
+                            </select>
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <div id="todos">
+            </div>
+        </div>
+    </template>
+    <template id="todo-template">
+        <div class="todo" tabindex="0">
+            <div class="todo-info">
+                <p class="todo-description" tabindex="0"></p>
+                 <div id="todo-priority">
+                    <p class="todo-priority-text"></p>
+                 </div>
+            </div>
+            <div class="todo-options">
+                <button id="todo-complete" title="Finish this todo">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                </button>
+                <button id="todo-delete" title="Delete this todo">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+                </button>
+            </div>
+        </div>
+    </template>
+</body>
+</html>
